@@ -1,0 +1,16 @@
+.DS_Store
+
+env/
+.venv
+
+*.bkp
+
+mosquitto/log
+mosquitto/data
+mqtt-vol/*
+
+state
+
+grafana/data/*
+
+prometheus/prometheus_data
