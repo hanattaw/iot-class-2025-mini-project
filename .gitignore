@@ -12,5 +12,7 @@ mqtt-vol/*
 state
 
 grafana/data/*
+influxdb/config/*
+influxdb/data/*
 
 prometheus/prometheus_data
