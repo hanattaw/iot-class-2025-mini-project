@@ -54,14 +54,14 @@ services:
     ports:
       - '3000:3000'
     
-  influxdb:
+  influxdb8085:
     image: influxdb:2.7
     ports:
-      - "8086:8086"
+      - "8085:8086"
     volumes:
-      - ./influxdb/data:/var/lib/influxdb2
-      - ./influxdb/config:/etc/influxdb2
-      - ./influxdb/opt:/opt
+      - ./influxdb8085/data:/var/lib/influxdb2
+      - ./influxdb8085/config:/etc/influxdb2
+      - ./influxdb8085/opt:/opt
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=admin
@@ -71,6 +71,42 @@ services:
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=mytoken
     networks:
       - iot
+
+  influxdb8086:
+      image: influxdb:2.7
+      ports:
+        - "8086:8086"
+      volumes:
+        - ./influxdb8086/data:/var/lib/influxdb2
+        - ./influxdb8086/config:/etc/influxdb2
+        - ./influxdb8086/opt:/opt
+      environment:
+        - DOCKER_INFLUXDB_INIT_MODE=setup
+        - DOCKER_INFLUXDB_INIT_USERNAME=admin
+        - DOCKER_INFLUXDB_INIT_PASSWORD=admin123
+        - DOCKER_INFLUXDB_INIT_ORG=my-org
+        - DOCKER_INFLUXDB_INIT_BUCKET=iot_data
+        - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=mytoken
+      networks:
+        - iot
+
+  influxdb8087:
+      image: influxdb:2.7
+      ports:
+        - "8087:8086"
+      volumes:
+        - ./influxdb8087/data:/var/lib/influxdb2
+        - ./influxdb8087/config:/etc/influxdb2
+        - ./influxdb8087/opt:/opt
+      environment:
+        - DOCKER_INFLUXDB_INIT_MODE=setup
+        - DOCKER_INFLUXDB_INIT_USERNAME=admin
+        - DOCKER_INFLUXDB_INIT_PASSWORD=admin123
+        - DOCKER_INFLUXDB_INIT_ORG=my-org
+        - DOCKER_INFLUXDB_INIT_BUCKET=iot_data
+        - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=mytoken
+      networks:
+        - iot
 
   kafka:
     image: bitnami/kafka:latest
