@@ -24,6 +24,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
+    hostname: prometheus
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus-data:/prometheus
@@ -35,6 +36,7 @@ services:
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
+    hostname: grafana
     user: '0'
     volumes:
       - ./grafana/data:/var/lib/grafana
@@ -56,6 +58,8 @@ services:
     
   influxdb8085:
     image: influxdb:2.7
+    container_name: influxdb8085
+    hostname: influxdb8085
     ports:
       - "8085:8086"
     volumes:
@@ -74,6 +78,8 @@ services:
 
   influxdb8086:
       image: influxdb:2.7
+      container_name: influxdb8086
+      hostname: influxdb8086
       ports:
         - "8086:8086"
       volumes:
@@ -92,6 +98,8 @@ services:
 
   influxdb8087:
       image: influxdb:2.7
+      container_name: influxdb8087
+      hostname: influxdb8087
       ports:
         - "8087:8086"
       volumes:
